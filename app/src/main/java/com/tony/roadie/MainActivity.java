@@ -2,6 +2,7 @@ package com.tony.roadie;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
 
-                //correct answer function
+                //shows a Toast saying whether the answer is correct or not
                 if(radioButton.getText().equals("A")){
                     Toast.makeText(MainActivity.this, "A: Bonne réponse!", Toast.LENGTH_SHORT).show();
                 }else{
@@ -62,9 +63,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //links the ImageView to ImageActivity
+        ImageView questionImageView = findViewById(R.id.questionImageView);
+        questionImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+
+                //sends current image (launcher background) to ImageActivity
+                intent.putExtra("imageId", R.drawable.ic_launcher_background);
+
+                startActivity(intent);
+            }
+        });
+
     }
 
-    //answer selection test function
+    //tests the answer selection with a Toast (off)
     public void checkButton(View v){
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
@@ -72,4 +87,7 @@ public class MainActivity extends AppCompatActivity {
         //Toast.makeText(this, radioButton.getText(), Toast.LENGTH_SHORT).show();
 
     }
+
+
+
 }
