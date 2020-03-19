@@ -46,35 +46,6 @@
         app:layout_constraintBottom_toTopOf="@+id/submitButton"
         app:layout_constraintEnd_toEndOf="@+id/questionImageView"
         app:layout_constraintStart_toStartOf="@+id/questionImageView"
-        app:layout_constraintTop_toBottomOf="@+id/questionImageView">
-
-        <RadioButton
-            android:id="@+id/answer1RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="A" />
-
-        <RadioButton
-            android:id="@+id/answer2RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="B" />
-
-        <RadioButton
-            android:id="@+id/answer3RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="C" />
-
-        <RadioButton
-            android:id="@+id/answer4RadioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkButton"
-            android:text="D" />
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@+id/questionImageView"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
