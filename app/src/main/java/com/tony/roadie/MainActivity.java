@@ -28,8 +28,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Question q = new Question("Comment s'appelle le batteur des Beatles?", R.drawable.the_beatles, "Ringo Starr", "John Frusciante", "Les Paul", "George Michael");
-        final Question q2 = new Question("Comment s'appelle le batteur de Nirvana?", R.drawable.nirvana, "Dave Grohl", "Krist Novoselic", "Steve Shelley", "Jack Irons");
+        final Question q = new Question("", R.drawable.unknown_musician, "", "", "", "");
+
+        //gets intent from last activity
+        Intent srcIntent = getIntent();
+
+        //clicking the button to the next question sets the bool to true, therefore changing the question
+        // (this works because there's only two questions, maybe change the bool to an int for more)
+        final boolean secondQuestion = srcIntent.getBooleanExtra("secondQuestion", false);
+        if(!secondQuestion){
+            q.setQuestion("Comment s'appelle le batteur des Beatles?");
+            q.setImage(R.drawable.the_beatles);
+            q.setItem1("Ringo Starr");
+            q.setItem2("George Michael");
+            q.setItem3("Les Paul");
+            q.setItem4("John Frusciante");
+
+        }else{
+            q.setQuestion("Comment s'appelle le batteur de Nirvana?");
+            q.setImage(R.drawable.nirvana);
+            q.setItem1("Dave Grohl");
+            q.setItem2("Krist Novoselic");
+            q.setItem3("Steve Shelley");
+            q.setItem4("Jack Irons");
+        }
+
         final TextView questionTextView = findViewById(R.id.questionTextView);
         final String question = q.getQuestion();
         questionTextView.setText(question);
@@ -78,21 +101,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
+
+                //defines item1 as the right answer
                 String rightAnswer = q.getItem1();
 
-                //shows a Toast saying whether the answer is correct or not, transforms the submitButton
+                //shows a Toast saying whether the answer is correct or not
+                //transforms the submit button into a link to the second question if it's the first question
+                //says the quiz is over if it's the second question
                 if(radioButton.getText().equals(rightAnswer)){
                     Toast.makeText(MainActivity.this, "A: Bonne réponse!", Toast.LENGTH_LONG).show();
-                    submitButton.setText("Question suivante");
-                    submitButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    if(!secondQuestion){
+                        submitButton.setText("Question suivante");
+                        submitButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                                intent.putExtra("secondQuestion", true);
+                                startActivity(intent);
 
-                            startActivity(intent);
+                            }
+                        });
+                    }else{
+                        submitButton.setText("Questionnaire terminé!");
+                    }
 
-                        }
-                    });
                 }else{
                     Toast.makeText(MainActivity.this, "Mauvaise réponse! C'est " + rightAnswer + ".", Toast.LENGTH_SHORT).show();
                 }
