@@ -25,5 +25,12 @@ public class homeActivity extends AppCompatActivity {
         });
 
         final Button aboutButton = findViewById(R.id.aboutButton);
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( homeActivity.this, aboutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".aboutActivity">
 
+    <TextView
+        android:id="@+id/aboutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="ROADIE by toto"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/versionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:text="v?"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="260dp"
+        android:layout_height="163dp"
+        android:gravity="center"
+        android:text="Quand le batteur ou le bassiste monte sur scène, toute le monde pense que c'est l'ingé son... Parce que personne ne le connait! ROADIE célèbre les musiciens du rythme sans qui le chanteur et le guitariste n'iraient pas bien loin."
+        app:layout_constraintBottom_toTopOf="@+id/versionTextView"
+        app:layout_constraintEnd_toEndOf="@+id/aboutTextView"
+        app:layout_constraintStart_toStartOf="@+id/aboutTextView"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTextView"
+        app:layout_constraintVertical_bias="0.466" />
 </androidx.constraintlayout.widget.ConstraintLayout>
