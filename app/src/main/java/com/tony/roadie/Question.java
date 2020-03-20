@@ -11,6 +11,7 @@ public class Question implements Parcelable {
     private String item2;
     private String item3;
     private String item4;
+    //TO DO: add an int questionId
 
     public Question(String question, int image, String item1, String item2, String item3, String item4) {
         this.question = question;

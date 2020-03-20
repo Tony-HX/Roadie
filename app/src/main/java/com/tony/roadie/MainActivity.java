@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         final int image = q.getImage();
         questionImageView.setImageResource(image);
 
-        //links the ImageView to ImageActivity
+        //links the current ImageView to ImageActivity
         questionImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //adds RadioButtons to the RadioGroup on Create then shuffles their order randomly
+        //adds RadioButtons to the RadioGroup and shuffles their order on create
         radioGroup = findViewById(R.id.answersRadioGroup);
         List<RadioButton> answers = new ArrayList<>();
         RadioButton answerRadioButton1 = new RadioButton(this);
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 //defines item1 as the right answer
                 String rightAnswer = q.getItem1();
 
-                //shows a Toast saying whether the answer is correct or not
+                //shows a Toast saying whether the submitted answer is correct or not
                 //transforms the submit button into a link to the second question if it's the first question
                 //says the quiz is over if it's the second question
                 if(radioButton.getText().equals(rightAnswer)){
